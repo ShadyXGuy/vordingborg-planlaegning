@@ -11,7 +11,7 @@ I Python vil der stort set altid være tale om polymorfi under programkørsel.
 ## Overlæsse
 
 > En funktion som kan anvendes på argumenter af forskellige typer og antal via flere implementeringer
-> -- systime [@systimeOverload]
+> -- systime
 
 Funktioner kan overlæsses ved at angive et eller flere valgfri parametre i en funktion.
 
@@ -22,7 +22,7 @@ Operatorer overlæsses vha. de indbyggede [metoder for operationer](https://docs
 ## Generisk funktion
 
 > En funktion som kan anvendes på argumenter af forskellig type via én implementering uden at tage hensyn til specifikke typer.
-> -- systime [@systimeGenerisk]
+> -- systime
 
 Kræver intet specielt i Python.
 
@@ -41,7 +41,7 @@ Brug [overload.py](exercises/overload.py) som udgangspunkt.
 
 I mange sprog er nedarvning et typisk værktøj til at opnå polymorfi.
 Konceptet er at en klasse kan nedarve fra en "forælder" hvis det er en mere specifik udgave af forælderen.
-Dermed kan fællestræk være defineret for forælderen, mens mere specifikke træk er defineret for børnene [@systimeNedarvning].
+Dermed kan fællestræk være defineret for forælderen, mens mere specifikke træk er defineret for børnene.
 
 Eksempel: Et kvadrat (underklasse) og en trapez (underklasse) **er** begge firkanter (superklasse).
 
