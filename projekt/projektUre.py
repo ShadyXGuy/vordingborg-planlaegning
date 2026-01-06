@@ -18,17 +18,26 @@ class StopUr(Ur):
         super().__init__()
         self.startTime = time.time()
 
+    def timeDif(self):
+        current = time.time()
+        return current - self.startTime
+# lav timestamp når bruges IKKE i klassen (kig evt round for at afrounde til 2 cifre hvis behov)
+
 
 
 pass
 
+
+#instance til test
 ur = Ur()
+stopur = StopUr()
 
-
+#test
 if __name__ == "__main__":
     while True:
         ur.updateTimer()
         print(ur.hour, ur.minute, ur.second)
+        print(stopur.timeDif())
         time.sleep(1)
 
 
