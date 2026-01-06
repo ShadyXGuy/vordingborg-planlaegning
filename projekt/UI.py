@@ -22,6 +22,8 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 
 watch = pygame.time.Clock()
 
+#ur til loop
+ur = projektUre.Ur()
 
 # infinite loop
 while True:
@@ -29,7 +31,9 @@ while True:
     display_surface.fill(white)
 
 
-    text = font.render(str(projektUre.updateTimer()[2]), True, green, blue)
+    #text = font.render(str(projektUre.updateTimer()[2]), True, green, blue)
+    ur.updateTimer()
+    text = font.render(str(f"{ur.day} / {ur.month} / {ur.year} \n {ur.hour}.{ur.minute}:{ur.second}"), True, green, blue)
 
     # create a rectangular object for the
     # text surface object
