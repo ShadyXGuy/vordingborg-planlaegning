@@ -23,6 +23,32 @@ class StopUr(Ur):
         return current - self.startTime
 # lav timestamp når bruges IKKE i klassen (kig evt round for at afrounde til 2 cifre hvis behov)
 
+class Alarm(Ur):
+    def __init__(self):
+        super().__init__()
+        self.alarm_hour = None
+        self.alarm_minute = None
+        self.alarm_day = None
+        self.enable = False
+
+    #tager input til set dag time minut alarmen bruger (i instance)
+    def setTime(self,day,hour,minute):
+        self.alarm_day = day
+        self.alarm_hour = hour
+        self.alarm_minute = minute
+        self.enable = True
+
+    #checks if trigger
+    def check(self):
+        self.updateTimer()
+        return (
+                self.enable and
+                self.hour == self.alarm_hour and
+                self.minute == self.alarm_minute and
+                self.day == self.alarm_day
+        )
+
+
 
 
 pass
@@ -31,13 +57,19 @@ pass
 #instance til test
 ur = Ur()
 stopur = StopUr()
+alarm = Alarm()
 
 #test
+alarm.setTime(6,9,4)
 if __name__ == "__main__":
     while True:
         ur.updateTimer()
         print(ur.hour, ur.minute, ur.second)
         print(stopur.timeDif())
+
+        if alarm.check():
+            print("do yo shid")
+
         time.sleep(1)
 
 
