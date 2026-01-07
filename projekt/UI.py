@@ -33,7 +33,7 @@ while True:
 
     #text = font.render(str(projektUre.updateTimer()[2]), True, green, blue)
     ur.updateTimer()
-    text = font.render(str(f"{ur.day} / {ur.month} / {ur.year} \n {ur.hour}.{ur.minute}:{ur.second}"), True, green, blue)
+    text = font.render(str(f"{ur.day:02} / {ur.month:02} / {ur.year} \n {ur.hour:02}:{ur.minute:02}:{ur.second:02}"), True, green, blue)
 
     # create a rectangular object for the
     # text surface object

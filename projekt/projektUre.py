@@ -60,7 +60,7 @@ stopur = StopUr()
 alarm = Alarm()
 
 #test
-alarm.setTime(6,9,4)
+alarm.setTime(7,10,55)
 if __name__ == "__main__":
     while True:
         ur.updateTimer()
