@@ -1,5 +1,9 @@
 import pygame
 import projektUre
+import pygame_widgets
+from pygame_widgets.button import Button
+from pygame_widgets.dropdown import Dropdown
+import time
 
 pygame.init()
 
@@ -7,14 +11,14 @@ white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
 
-X = 400
-Y = 400
+X = 600
+Y = 500
 
 # create the display surface object
 # of specific dimension..e(X, Y).
-display_surface = pygame.display.set_mode((X, Y))
+display_surface = pygame.display.set_mode((X, Y), pygame.RESIZABLE)
 
-pygame.display.set_caption('Show Text')
+pygame.display.set_caption('Epic Gamer Watch')
 
 font = pygame.font.Font('freesansbold.ttf', 32)
 
@@ -24,6 +28,55 @@ watch = pygame.time.Clock()
 
 #ur til loop
 ur = projektUre.Ur()
+
+hour = Dropdown(
+    display_surface, 120, 50, 100, 15, name='Select Hour',
+    choices=[
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'
+    ],
+    borderRadius=3, colour=pygame.Color('green'),  direction='down', textHAlign='centre',
+)
+
+minute = Dropdown(
+    display_surface, 230, 50, 100, 15, name='Select Minute',
+    choices=[
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59'
+    ],
+    borderRadius=3, colour=pygame.Color('green'),  direction='down', textHAlign='centre',
+)
+
+second = Dropdown(
+    display_surface, 340, 50, 100, 15, name='Select Second',
+    choices=[
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59'
+    ],
+    borderRadius=3, colour=pygame.Color('green'),  direction='down', textHAlign='centre',
+)
+
+
+
+def print_value():
+    print(hour.getSelected(), minute.getSelected(), second.getSelected())
+
+def reset_value():
+    hour.chosen = str(0)
+    minute.chosen = str(0)
+    second.chosen = str(0)
+
+button = Button(
+    display_surface, 10, 50, 100, 30, text='Print Value', fontSize=30,
+    margin=20, inactiveColour=(255, 0, 0), pressedColour=(0, 255, 0),
+    radius=5, onClick=print_value, font=pygame.font.SysFont('freesansbold', 20),
+    textVAlign='bottom'
+)
+
+resetButton = Button(
+    display_surface, 10, 100, 100, 30, text='Reset', fontSize=30,
+    margin=20, inactiveColour=(255, 0, 0), pressedColour=(0, 120, 120),
+    radius=5, onClick=reset_value, font=pygame.font.SysFont('freesansbold', 20),
+    textVAlign='bottom'
+)
+
 
 # infinite loop
 while True:
@@ -43,6 +96,14 @@ while True:
 
     textRect.center = (X // 2, Y // 2)
 
+    projektUre.alarm.setTime(hour.getSelected(), minute.getSelected(), second.getSelected())
+
+
+
+    print(hour.getSelected(), minute.getSelected(), second.getSelected())
+    if projektUre.alarm.check():
+        print("WAKE UP AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
 
 
     for event in pygame.event.get():
@@ -53,5 +114,7 @@ while True:
             quit()
 
         # Draws the surface object to the screen.
+
+    pygame_widgets.update(pygame.event.get())
     pygame.display.update()
     watch.tick(60)
