@@ -34,6 +34,7 @@ class Alarm(Ur):
     #tager input til set dag time minut alarmen bruger (i instance)
     def setTime(self,day,hour,minute):
         if day is None or hour is None or minute is None:
+            self.enable = False
             return
         self.alarm_day = int(day)
         self.alarm_hour = int(hour)
@@ -57,17 +58,14 @@ ur = Ur()
 stopur = StopUr()
 alarm = Alarm()
 
-#test
-
 alarm.setTime(7,10,55)
+
+
 if __name__ == "__main__":
     while True:
         ur.updateTimer()
         print(ur.hour, ur.minute, ur.second)
         print(stopur.timeDif())
-
-        if alarm.check():
-            print("do yo shid")
 
         time.sleep(1)
 
