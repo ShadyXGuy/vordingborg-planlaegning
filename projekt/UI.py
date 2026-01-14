@@ -98,11 +98,16 @@ while True:
 
     projektUre.alarm.setTime(hour.getSelected(), minute.getSelected(), second.getSelected())
 
-
-
     print(hour.getSelected(), minute.getSelected(), second.getSelected())
+
+
+
     if projektUre.alarm.check():
         print("WAKE UP AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        alarmtext = font.render("ALARM!", True, (255, 0, 0))
+        alarmRect = alarmtext.get_rect()
+        alarmRect.center = (X // 2, Y // 2)
+        display_surface.blit(alarmtext, alarmRect)
 
 
 
