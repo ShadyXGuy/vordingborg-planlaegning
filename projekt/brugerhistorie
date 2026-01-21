@@ -1,0 +1,24 @@
+
+Alarm:
+1. brugeren åbner programmet
+2. brugeren tjekker klokken
+3. brugeren trykker på dag knappen
+*brugeren ser datoer
+4. brugeren vælger dato
+5. brugeren trykker på time knappen
+*brugeren ser timerne
+6. brugeren vælger timen
+7. brugeren trykker på minut knappen
+*brugeren ser minutterne
+8. brugeren vælger minuttet
+9. brugeren sætter sin alarm
+10. brugeren bruger sin tid på noget andet
+11. alarmen går af
+12. brugerne gør de de skulle.
+
+timer:
+1. brugeren åbner programmet
+2. brugeren tjekker klokken
+3. brugeren starter timeren
+4. brugeren gemmer en tid
+5. brugeren slutter timeren

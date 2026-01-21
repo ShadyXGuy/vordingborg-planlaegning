@@ -29,6 +29,7 @@ watch = pygame.time.Clock()
 #ur til loop
 ur = projektUre.Ur()
 
+#drop downknapper til alarm
 hour = Dropdown(
     display_surface, 120, 57, 100, 15, name='Select Day',
     choices=[
@@ -54,15 +55,17 @@ second = Dropdown(
 )
 
 
-
+#value tjek
 def print_value():
     print(hour.getSelected(), minute.getSelected(), second.getSelected())
 
+#reset alarm
 def reset_value():
     hour.reset()
     minute.reset()
     second.reset()
 
+#print værdi knap
 button = Button(
     display_surface, 10, 50, 100, 30, text='Print Value', fontSize=30,
     margin=20, inactiveColour=(255, 0, 0), pressedColour=(0, 255, 0),
@@ -70,6 +73,7 @@ button = Button(
     textVAlign='centre', textHAlign='centre'
 )
 
+#reset alarm knap
 resetButton = Button(
     display_surface, 10, 100, 100, 30, text='Reset', fontSize=30,
     margin=20, inactiveColour=(0, 120, 120), pressedColour=(0, 255, 0),
@@ -83,12 +87,12 @@ while True:
 
     display_surface.fill(white)
 
-
+    #ur i ui
     #text = font.render(str(projektUre.updateTimer()[2]), True, green, blue)
     ur.updateTimer()
     text = font.render(str(f"{ur.day:02} / {ur.month:02} / {ur.year} \n {ur.hour:02}:{ur.minute:02}:{ur.second:02}"), True, green, blue)
 
-    # create a rectangular object for the
+    # create a rectangular object for the ur
     # text surface object
     textRect = text.get_rect()
 
@@ -96,6 +100,7 @@ while True:
 
     textRect.center = (X // 2, Y // 2)
 
+    #alarm i UI
     projektUre.alarm.setTime(hour.getSelected(), minute.getSelected(), second.getSelected())
 
     print(hour.getSelected(), minute.getSelected(), second.getSelected())
