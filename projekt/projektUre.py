@@ -15,12 +15,13 @@ class Ur:
 
 class StopUr(Ur):
     def __init__(self):
-        super().__init__()
         self.startTime = time.time()
 
     def timeDif(self):
         current = time.time()
-        return current - self.startTime
+        return int(current - self.startTime)
+
+
 # lav timestamp når bruges IKKE i klassen (kig evt round for at afrounde til 2 cifre hvis behov)
 
 class Alarm(Ur):
@@ -66,7 +67,9 @@ if __name__ == "__main__":
         ur.updateTimer()
         print(ur.hour, ur.minute, ur.second)
         print(stopur.timeDif())
-
         time.sleep(1)
+
+
+
 
 
