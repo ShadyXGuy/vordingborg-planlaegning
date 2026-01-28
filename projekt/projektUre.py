@@ -13,13 +13,13 @@ class Ur:
         self.minute = time.localtime().tm_min
         self.second = time.localtime().tm_sec
 
-class StopUr(Ur):
+class StopUr():
     def __init__(self):
         self.startTime = time.time()
 
     def timeDif(self):
         current = time.time()
-        return int(current - self.startTime)
+        return round(current - self.startTime,2)
 
 
 # lav timestamp når bruges IKKE i klassen (kig evt round for at afrounde til 2 cifre hvis behov)
